@@ -3,7 +3,7 @@ import DiaryNotesNavbar from './DiaryNotesNavbar'
 
 const DiaryNotes = () => {
     return (
-        <div className="diary-content flex flex-col h-screen">
+        <div className="main-diary-content flex flex-col h-screen">
             <DiaryNotesNavbar />
 
             <div className="diary-notes-content p-3 flex flex-col h-full">

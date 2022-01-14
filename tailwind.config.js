@@ -3,7 +3,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      opacity: {
+        '30': '0.30'
+      }
+    },
   },
   plugins: [],
 }

@@ -3,7 +3,7 @@ import DiaryEntry from './DiaryEntry'
 
 const DiaryEntries = () => {
 
-    const entries = [1,2,3,4,5]
+    const entries = [1,2,3,4,5,6,7]
 
     return (
         <div className="diary-entries overflow-y-scroll mt-6">

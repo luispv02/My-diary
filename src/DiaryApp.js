@@ -1,9 +1,12 @@
+import Login from "./components/auth/Login";
 import DiaryHomepage from "./components/home/DiaryHomePage";
 
 function App() {
   return (
     <>
-      <DiaryHomepage />
+      {/* <DiaryHomepage /> */}
+
+      <Login />
     </>
   );
 }
