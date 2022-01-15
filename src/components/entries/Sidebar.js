@@ -1,24 +1,32 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { hiddenSidebar } from '../../helpers/helpers'
 import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
 
-    
+    const navigate = useNavigate()
+
+    const handleLogout= () => {
+        navigate('/')
+    }
 
     return (
-        <div className="content-sidebar flex flex-col bg-slate-800 pb-2 h-screen fixed w-full z-10 -top-full duration-300">
+        <div className="content-sidebar w-full  flex flex-col bg-slate-800 pb-2 h-screen fixed z-10 -left-full duration-300  md:static">
             <div className="diary-sidebar-navbar flex justify-between px-3 pt-4 text-white font-medium ">
                 
                 <h2>LuisPv</h2>
-                <button className="hover:text-gray-300">
-                    Logout
-                </button>
+                <button 
+                    className="hover:text-gray-300"
+                    onClick={handleLogout}
+                >Logout</button>
                 
-                <i 
-                    className="fas fa-chevron-up text-lg absolute left-2/4 -translate-x-1/2 cursor-pointer"
-                    onClick={ hiddenSidebar }
-                ></i>
+                <div className="icon-hidden-sidebar absolute left-2/4 -translate-x-1/2 md:hidden">
+                    <i 
+                        className="fas fa-times text-lg cursor-pointer"
+                        onClick={ hiddenSidebar }
+                    ></i>
+                </div>
             </div>
 
             <div className="diary-sidebar-new-entry text-white text-center pt-16">

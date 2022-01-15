@@ -2,11 +2,11 @@ import React from 'react'
 
 const DiaryEntry = () => {
     return (
-        <div className="diary-entry bg-white m-3 mb-4 rounded-md overflow-hidden flex flex-row">
+        <div className="diary-entry bg-white m-3 mb-4 rounded-md overflow-hidden flex flex-row h-18">
             <div className="diary-entry-image w-16 flex-none">
                 <img 
                     src='https://ximagen.com/images/2019/03/10/imagenes-bonitas.jpg' 
-                    className='w-full h-full'
+                    className='w-full h-full md:w-5/6'
                 />
             </div>
 

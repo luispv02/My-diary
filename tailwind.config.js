@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      'screens': {
+        'sm': '540px'
+      },
       opacity: {
         '30': '0.30'
       }
