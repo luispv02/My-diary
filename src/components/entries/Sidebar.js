@@ -1,19 +1,29 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { hiddenSidebar } from '../../helpers/helpers'
+import { closeSidebar } from '../../actions/actions'
 import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleLogout= () => {
-        navigate('/')
+        navigate('/login')
+    }
+
+    const {showMain} = useSelector(state => state.showSidebar)
+    console.log(showMain)
+
+    const hiddenSidebar = () => {
+        dispatch(closeSidebar())
     }
 
     return (
-        <div className="content-sidebar w-full  flex flex-col bg-slate-800 pb-2 h-screen fixed z-10 -left-full duration-300  md:static">
-            <div className="diary-sidebar-navbar flex justify-between px-3 pt-4 text-white font-medium ">
+        <div className={ showMain ? 'left-0 content-sidebar w-full  flex flex-col bg-slate-800 pb-2 h-screen fixed z-10 duration-300 md-static' : "w-full -left-full fixed duration-300 bg-slate-800 z-20 flex flex-col h-screen md:static"}>
+        
+            <div className="diary-sidebar-navbar flex justify-between px-3 pt-3 text-white font-medium ">
                 
                 <h2>LuisPv</h2>
                 <button 
@@ -29,7 +39,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="diary-sidebar-new-entry text-white text-center pt-16">
+            <div className="diary-sidebar-new-entry text-white text-center pt-12">
                 <button className="">
                     <i className="far fa-calendar-plus text-7xl duration-500 hover:scale-125 hover:duration-500"></i>
                 </button>

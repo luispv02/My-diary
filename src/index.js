@@ -5,8 +5,6 @@ import DiaryApp from './DiaryApp';
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <DiaryApp />
-  </React.StrictMode>,
+      <DiaryApp />,
   document.getElementById('root')
 );

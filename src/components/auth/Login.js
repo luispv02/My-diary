@@ -1,9 +1,12 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { closeSidebar } from '../../actions/actions'
 
 const Login = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const goToRegister = () => {
         navigate('/register')
@@ -11,7 +14,9 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        navigate('/home')
+        navigate('/')
+
+        dispatch(closeSidebar())
     }
 
     return (

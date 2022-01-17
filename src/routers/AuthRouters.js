@@ -4,13 +4,14 @@ import Register from '../components/auth/Register'
 import Sidebar from '../components/entries/Sidebar'
 import DiaryNotes from '../components/notes/DiaryNotes'
 import DiaryHomePage from '../components/home/DiaryHomePage'
+import Login from '../components/auth/Login'
 
 const AuthRouters = () => {
     return (
         <Routes>
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
 
-            <Route path="/home"  element={<DiaryHomePage /> }/>
+            <Route path="/register"  element={<Register /> }/>
 
         </Routes>
     )

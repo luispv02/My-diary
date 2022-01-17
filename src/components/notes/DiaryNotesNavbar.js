@@ -1,9 +1,16 @@
 import React from 'react'
-import { showSidebar } from '../../helpers/helpers'
+import { useDispatch } from 'react-redux'
+import { openSidebar } from '../../actions/actions'
+
+
 
 const DiaryNotesNavbar = () => {
 
-    
+    const dispatch = useDispatch()
+
+    const showSidebar = () => {
+        dispatch(openSidebar())
+    }
 
     return (
         <div className="diary-navbar bg-cyan-600 flex justify-between px-2 py-3 text-white w-full">
