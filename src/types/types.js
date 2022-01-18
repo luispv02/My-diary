@@ -3,6 +3,10 @@ export const types = {
     closeSidebar: '[Sidebar] Close Sidebar',
 
     login: '[Auth] Login',
-    logout: '[Auth] Logout'
+    logout: '[Auth] Logout',
+
+    showError: '[UI] Show Error',
+    removeError: '[UI] Remove Error'
+
 }
 
