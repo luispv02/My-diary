@@ -1,22 +1,35 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { closeSidebar } from '../../actions/actions'
+import { loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
+import { closeSidebar } from '../../actions/sidebar'
+import useForm from '../../hooks/useForm'
 
 const Login = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const [inputValue, handleInputChange] = useForm({
+        email: 'luis@gmail.com',
+        password: 123456
+    })
+    const {email, password} = inputValue;
+   
+
     const goToRegister = () => {
         navigate('/register')
     }
 
-    const handleLogin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/')
+        dispatch(closeSidebar());
 
-        dispatch(closeSidebar())
+        dispatch(loginWithEmailAndPassword())
+    }
+
+    const handleLoginGoogle = () => {
+        dispatch(signInWithGoogle())
     }
 
     return (
@@ -27,7 +40,7 @@ const Login = () => {
                     className='w-20 absolute left-2/4 -translate-x-1/2 -top-12'
                 />
                 <form
-                    onSubmit={handleLogin}
+                    onSubmit={handleSubmit}
                 >
                     <div className="relative">
                         <i className="fas fa-user text-white absolute bottom-1"></i>
@@ -35,6 +48,9 @@ const Login = () => {
                             type="email"
                             placeholder='Email'
                             className="w-full bg-transparent border-b border-white pl-6 mt-3 placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm"
+                            name='email'
+                            onChange={handleInputChange}
+                            value={email}
                         />
                     </div>
 
@@ -44,6 +60,9 @@ const Login = () => {
                             type="password"
                             placeholder='Password'
                             className="w-full bg-transparent border-b border-white pl-6 mt-3 placeholder-white text-white focus:outline-0 focus:border-b-blue-800 duration-300 text-sm"
+                            name='password'
+                            onChange={handleInputChange}
+                            value={password}
                         />
                     </div>
                     
@@ -68,7 +87,10 @@ const Login = () => {
 
                 <div className="login-google  mt-14">
                     <h3 className="text-white">Login with social networks</h3> 
-                    <div className="login-google-button flex items-center bg-blue-500 p-1  cursor-pointer hover:shadow-md hover:shadow-gray-500 duration-200">
+                    <div 
+                        className="login-google-button flex items-center bg-blue-500 p-1  cursor-pointer hover:shadow-md hover:shadow-gray-500 duration-200"
+                        onClick={handleLoginGoogle}
+                        >
                         <img 
                             src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
                             className="bg-white p-2 w-9 h-9"

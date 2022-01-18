@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { closeSidebar } from '../../actions/actions'
+import { closeSidebar } from '../../actions/sidebar'
 import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
