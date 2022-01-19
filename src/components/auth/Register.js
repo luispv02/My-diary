@@ -3,6 +3,7 @@ import useForm from '../../hooks/useForm'
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, showError } from '../../actions/ui';
+import { registerUserWithEmailAndPassword } from '../../actions/auth';
 
 const Register = () => {
 
@@ -24,7 +25,7 @@ const Register = () => {
         e.preventDefault();
 
         if(formValid()){
-            dispatch(removeError())
+            dispatch(registerUserWithEmailAndPassword(email, password, name))
         }
     }
 
@@ -40,6 +41,7 @@ const Register = () => {
             return false;
         }
 
+        dispatch(removeError())
         return true;
     
     }

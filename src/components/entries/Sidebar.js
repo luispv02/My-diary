@@ -13,7 +13,7 @@ const Sidebar = () => {
         navigate('/login')
     }
 
-    const {showMain} = useSelector(state => state.showSidebar)
+    const {showMain} = useSelector(state => state.sidebar)
     console.log(showMain)
 
     const hiddenSidebar = () => {
