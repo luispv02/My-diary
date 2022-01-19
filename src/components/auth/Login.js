@@ -25,7 +25,7 @@ const Login = () => {
         e.preventDefault();
         dispatch(closeSidebar());
 
-        dispatch(loginWithEmailAndPassword())
+        dispatch(loginWithEmailAndPassword(email, password))
     }
 
     const handleLoginGoogle = () => {

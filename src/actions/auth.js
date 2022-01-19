@@ -1,5 +1,5 @@
 import { types } from "../types/types"
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword  } from "firebase/auth";
 import { provider } from "../firebase/firebase-config";
 
 //Register user with email and password
@@ -22,11 +22,17 @@ export const registerUserWithEmailAndPassword = (email, password, name) => {
 }
 
 //Login with email and password
-export const loginWithEmailAndPassword = () => {
+export const loginWithEmailAndPassword = (email, password) => {
     return (dispatch) => {
-        setTimeout(() => {
-            dispatch(login('luispv',1111))
-        }, 3000);
+        try {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, email,password)
+                .then(({user}) => {
+                    console.log(user)
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
