@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
+import { keepActiveUser, loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
 import { closeSidebar } from '../../actions/sidebar'
 import useForm from '../../hooks/useForm'
 
@@ -17,14 +17,9 @@ const Login = () => {
     const {email, password} = inputValue;
    
 
-    const goToRegister = () => {
-        navigate('/register')
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(closeSidebar());
-
         dispatch(loginWithEmailAndPassword(email, password))
     }
 
@@ -76,12 +71,13 @@ const Login = () => {
                 <div className="create-change">
                     <button 
                         className="italic hover:underline font-light text-sm float-right text-white"
+                        onClick={() => navigate('/reset')}
                     >Forgot password?</button>
 
                     <button 
                         className="italic hover:underline font-light text-sm float-left text-white
                         "
-                        onClick={goToRegister}
+                        onClick={() => navigate('/register')}
                     >Create Account</button>
                 </div>
 
