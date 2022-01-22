@@ -21,7 +21,7 @@ const Register = () => {
 
     const {name,email, password, password2} = inputValue;
 
-    const handleSubmit = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
 
         if(formValid()){
@@ -59,7 +59,7 @@ const Register = () => {
 
                 <form 
                     className="mt-2"
-                    onSubmit={handleSubmit}
+                    onSubmit={handleRegister}
                  >
                     <input 
                         type="text"

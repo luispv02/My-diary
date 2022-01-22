@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { keepActiveUser, loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
+import { loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
 import { closeSidebar } from '../../actions/sidebar'
 import useForm from '../../hooks/useForm'
 
@@ -17,10 +17,10 @@ const Login = () => {
     const {email, password} = inputValue;
    
 
-    const handleSubmit = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
-        dispatch(closeSidebar());
         dispatch(loginWithEmailAndPassword(email, password))
+        dispatch(closeSidebar());
     }
 
     const handleLoginGoogle = () => {
@@ -35,7 +35,7 @@ const Login = () => {
                     className='w-20 absolute left-2/4 -translate-x-1/2 -top-12'
                 />
                 <form
-                    onSubmit={handleSubmit}
+                    onSubmit={handleLogin}
                 >
                     <div className="relative">
                         <i className="fas fa-user text-white absolute bottom-1"></i>

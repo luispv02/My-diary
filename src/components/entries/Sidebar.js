@@ -1,20 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { startLogout } from '../../actions/auth'
 import { closeSidebar } from '../../actions/sidebar'
 import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
-
-    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const {user} = useSelector(state => state.auth);
+    console.log(user)
 
     const handleLogout= () => {
-        navigate('/login')
+        dispatch(startLogout())
     }
 
     const {showMain} = useSelector(state => state.sidebar)
-    console.log(showMain)
 
     const hiddenSidebar = () => {
         dispatch(closeSidebar())
@@ -25,7 +24,7 @@ const Sidebar = () => {
         
             <div className="diary-sidebar-navbar flex justify-between px-3 pt-3 text-white font-medium ">
                 
-                <h2>LuisPv</h2>
+                <h2>{user}</h2>
                 <button 
                     className="hover:text-gray-300"
                     onClick={handleLogout}

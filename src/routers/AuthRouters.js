@@ -9,11 +9,9 @@ const AuthRouters = () => {
     return (
         <Routes>
             <Route path="/login" element={<Login />} />
-
             <Route path="/register"  element={<Register /> }/>
-
             <Route path="/reset" element={ <ResetPassword /> }/>
-
+            <Route path="/*" element={ <Login /> }/>
         </Routes>
     )
 }
