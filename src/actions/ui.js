@@ -14,3 +14,15 @@ export const removeError = () => {
         type: types.removeError
     }
 }
+
+export const disableBtn = () => {
+    return {
+        type: types.disableButton
+    }
+}
+
+export const activeBtn = () => {
+    return {
+        type: types.activeButton
+    }
+}

@@ -1,11 +1,12 @@
 import { types } from "../types/types";
 
 const initialState = {
-    msgError: null
+    msgError: null,
+    disabledBtn: false,
 }
 
 
-export const uiReducer = (state = {}, action) => {
+export const uiReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.showError:
             return {
@@ -17,6 +18,18 @@ export const uiReducer = (state = {}, action) => {
             return {
                 ...state,
                 msgError: null
+            }
+
+        case types.disableButton:
+            return {
+                ...state,
+                disabledBtn: true
+            }
+
+        case types.activeButton:
+            return {
+                ...state,
+                disabledBtn: false
             }
     
         default:

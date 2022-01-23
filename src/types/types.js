@@ -6,7 +6,10 @@ export const types = {
     logout: '[Auth] Logout',
 
     showError: '[UI] Show Error',
-    removeError: '[UI] Remove Error'
+    removeError: '[UI] Remove Error',
+
+    disableButton: '[UI] Disabled Button',
+    activeButton: '[UI] Active Button'
 
 }
 

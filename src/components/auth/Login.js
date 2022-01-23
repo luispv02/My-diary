@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
 import { closeSidebar } from '../../actions/sidebar'
@@ -9,18 +9,22 @@ const Login = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const {disabledBtn} = useSelector(state => state.ui);
+    console.log(disabledBtn)
 
     const [inputValue, handleInputChange] = useForm({
-        email: 'luis@gmail.com',
-        password: 123456
+        email: '',
+        password: ''
     })
     const {email, password} = inputValue;
    
 
     const handleLogin = (e) => {
         e.preventDefault();
+
+        
         dispatch(loginWithEmailAndPassword(email, password))
-        dispatch(closeSidebar());
+        /* dispatch(closeSidebar()); */
     }
 
     const handleLoginGoogle = () => {
@@ -64,7 +68,8 @@ const Login = () => {
                     <input
                         type="submit"
                         value='Login'
-                        className="block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 cursor-pointer"
+                        className={disabledBtn ? "cursor-not-allowed block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 " : 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 cursor-pointer' }
+                        disabled={disabledBtn}
                     />
                 </form>
 

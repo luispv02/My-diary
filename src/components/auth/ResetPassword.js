@@ -4,6 +4,7 @@ import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
 import { removeError, showError } from "../../actions/ui";
 import { restorePassword } from "../../actions/auth";
+import Swal from "sweetalert2";
 
 
 const ResetPassword = () => {
@@ -11,22 +12,21 @@ const ResetPassword = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {msgError = ''} = useSelector(state => state.ui);
-    console.log(msgError)
 
     const [{email}, handleInputChange] = useForm({
         email: ''
     })
 
-    const handleSubmit = (e) => {
+    const handleReset = (e) => {
         e.preventDefault();
 
         if(!validator.isEmail(email) ){
-            dispatch(showError('Email invalid'));
+            Swal.fire({icon: 'error', text: 'Email invalid'});
             return false
         }
+
         dispatch(removeError())
         dispatch(restorePassword(email))
-        
     }
 
     return (
@@ -44,7 +44,7 @@ const ResetPassword = () => {
                 }
 
                 <form
-                    onSubmit={handleSubmit}
+                    onSubmit={handleReset}
                 >
                     <div className="relative">
                         <i className="fas fa-user text-white absolute bottom-1"></i>
