@@ -21,7 +21,8 @@ const DiaryNotes = () => {
                 <div className="diary-note-image">
                     <img 
                         src='https://ximagen.com/images/2019/03/10/imagenes-bonitas.jpg'
-                        className='w-40 ' 
+                        alt='sunset'
+                        className='w-40' 
                     />
                 </div>
             </div>

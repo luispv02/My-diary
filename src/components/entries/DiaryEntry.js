@@ -6,6 +6,7 @@ const DiaryEntry = () => {
             <div className="diary-entry-image w-16 flex-none">
                 <img 
                     src='https://ximagen.com/images/2019/03/10/imagenes-bonitas.jpg' 
+                    alt='sunset'
                     className='w-full h-full md:w-5/6'
                 />
             </div>

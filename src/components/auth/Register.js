@@ -10,8 +10,7 @@ const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {msgError = null, disabledBtn} = useSelector(state => state.ui);
-    console.log(disabledBtn)
-    
+
 
     const [inputValue, handleInputChange] = useForm({
         name: '',
@@ -45,6 +44,11 @@ const Register = () => {
         dispatch(removeError())
         return true;
     
+    }
+
+    const handleGoLogin = () => {
+        navigate('/login');
+        dispatch(removeError())
     }
 
     const classBtn = 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5'
@@ -109,7 +113,7 @@ const Register = () => {
 
                 <button 
                     className="text-white italic text-sm mt-4 hover:underline"
-                    onClick={() => {navigate('/login')}}
+                    onClick={handleGoLogin}
                 >Are you already registered?</button>
             </div>
         </div>

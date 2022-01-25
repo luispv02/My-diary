@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
-import { removeError, showError } from "../../actions/ui";
+import { removeError } from "../../actions/ui";
 import { restorePassword } from "../../actions/auth";
 import Swal from "sweetalert2";
 
@@ -11,8 +11,7 @@ const ResetPassword = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {msgError = '', disabledBtn} = useSelector(state => state.ui);
-    console.log(disabledBtn)
+    const {disabledBtn} = useSelector(state => state.ui);
 
     const [{email}, handleInputChange] = useForm({
         email: ''
@@ -37,14 +36,11 @@ const ResetPassword = () => {
             <div className="login-content bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-10 pb-6  w-3/4 rounded-md relative sm:w-1/2 md:w-1/3 lg:w-1/4">
                 <img 
                     src='user.png'
+                    alt='user icon'
                     className='w-20 absolute left-2/4 -translate-x-1/2 -top-12'
                 />
 
                 <h2 className="text-white font-semilbold text-2xl">Restore Password</h2>
-
-                {
-                    msgError && <p className="text-center text-sm text-white p-2 mt-3 leading-4 rounded-md bg-red-600  shadow-lg shadow-gray-800 ">{msgError}</p>
-                }
 
                 <form
                     onSubmit={handleReset}

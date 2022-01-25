@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { loginWithEmailAndPassword, signInWithGoogle } from '../../actions/auth'
-import { closeSidebar } from '../../actions/sidebar'
 import useForm from '../../hooks/useForm'
 
 const Login = () => {
@@ -20,10 +19,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-
-        
         dispatch(loginWithEmailAndPassword(email, password))
-        /* dispatch(closeSidebar()); */
     }
 
     const handleLoginGoogle = () => {
@@ -37,6 +33,7 @@ const Login = () => {
             <div className="login-content bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-10 pb-6  w-3/4 rounded-md relative sm:w-1/2 md:w-1/3 lg:w-1/4">
                 <img 
                     src='user.png'
+                    alt='user icon'
                     className='w-20 absolute left-2/4 -translate-x-1/2 -top-12'
                 />
                 <form
@@ -95,6 +92,7 @@ const Login = () => {
                         >
                         <img 
                             src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+                            alt='icon google'
                             className="bg-white p-2 w-9 h-9"
                         />
                         <p className="text-white font-semibold m-auto">Sign in with Google</p>
