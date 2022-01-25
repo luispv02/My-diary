@@ -9,7 +9,8 @@ const Register = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {msgError = null} = useSelector(state => state.ui)
+    const {msgError = null, disabledBtn} = useSelector(state => state.ui);
+    console.log(disabledBtn)
     
 
     const [inputValue, handleInputChange] = useForm({
@@ -46,6 +47,7 @@ const Register = () => {
     
     }
 
+    const classBtn = 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5'
 
     return (
         <div className="register-container  w-full h-screen bg-gradient-to-b from-blue-700 to-sky-400 flex justify-center items-center">
@@ -100,7 +102,8 @@ const Register = () => {
                     <input 
                         type="submit"
                         value="Register"
-                        className="block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 cursor-pointer"
+                        className={disabledBtn ? `cursor-not-allowed ${classBtn}` : `cursor-pointer ${classBtn}`}
+                        disabled={disabledBtn}
                     />
                 </form>
 

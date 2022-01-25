@@ -1,5 +1,5 @@
 import { types } from "../types/types"
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut  } from "firebase/auth";
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, sendPasswordResetEmail, signOut  } from "firebase/auth";
 import { googleProvider } from "../firebase/firebase-config";
 import Swal from 'sweetalert2'
 import { activeBtn, disableBtn} from "./ui";
@@ -8,15 +8,21 @@ import { closeSidebar } from "./sidebar";
 //Register user with email and password
 export const registerUserWithEmailAndPassword = (email, password, name) => {
     return (dispatch) => {
+
+            dispatch(disableBtn())
+
             const auth = getAuth();
             createUserWithEmailAndPassword(auth, email, password)
                 .then( async ({user}) => {
                     console.log(user)
+                    dispatch(activeBtn())
                     await updateProfile(user, {displayName: name})
-                    dispatch(login(user.displayName, user.uid))
+                    dispatch(login(user.displayName, user.uid));
+
                 })
                 .catch(error => {
                     console.log(error)
+                    dispatch(activeBtn())
                     if(error.code === 'auth/email-already-in-use'){
                         Swal.fire({icon: 'error', text: 'Email already registered'});
                     }
@@ -59,15 +65,18 @@ export const loginWithEmailAndPassword = (email, password) => {
 
 // Restore password
 export const restorePassword = (email) => {
-    return () => {
+    return (dispatch) => {
+            dispatch(disableBtn())
+
             const auth = getAuth();
             sendPasswordResetEmail(auth, email)
             .then(() => {
                 Swal.fire({icon: 'success', text: 'Email send'});
-    
+                dispatch(activeBtn())
             }) 
             .catch(error => {
                 console.log(error)
+                dispatch(activeBtn())
                 Swal.fire({icon: 'info', text: 'Unregistered mail'});
             })
     }
@@ -79,7 +88,8 @@ export const signInWithGoogle = () => {
         const auth = getAuth()
         signInWithPopup(auth, googleProvider)
             .then(({user}) => {
-                dispatch(login(user.displayName, user.uid))
+                dispatch(login(user.displayName, user.uid));
+                dispatch(closeSidebar());
             })
     }
 }

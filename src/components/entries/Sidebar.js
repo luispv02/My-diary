@@ -7,7 +7,6 @@ import DiaryEntries from './DiaryEntries'
 const Sidebar = () => {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state.auth);
-    console.log(user)
 
     const handleLogout= () => {
         dispatch(startLogout())
@@ -19,12 +18,14 @@ const Sidebar = () => {
         dispatch(closeSidebar())
     }
 
+    const sidebarClasses = 'w-full flex flex-col  h-screen fixed duration-300 bg-slate-800 md:static z-10'
+
     return (
-        <div className={ showMain ? 'left-0 content-sidebar w-full  flex flex-col bg-slate-800 pb-2 h-screen fixed z-10 duration-300 md-static' : "w-full -left-full fixed duration-300 bg-slate-800 z-20 flex flex-col h-screen md:static"}>
+        <div className={ showMain ? `left-0 ${sidebarClasses}` : `-left-full ${sidebarClasses} `}>
         
-            <div className="diary-sidebar-navbar flex justify-between px-3 pt-3 text-white font-medium ">
+            <div className="diary-sidebar-navbar flex justify-between items-start px-3 pt-3 text-white font-medium ">
                 
-                <h2>{user}</h2>
+                <h2 className="w-2.5 sm:w-1/2 md:w-full">{user}</h2>
                 <button 
                     className="hover:text-gray-300"
                     onClick={handleLogout}

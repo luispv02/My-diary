@@ -11,7 +11,8 @@ const ResetPassword = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {msgError = ''} = useSelector(state => state.ui);
+    const {msgError = '', disabledBtn} = useSelector(state => state.ui);
+    console.log(disabledBtn)
 
     const [{email}, handleInputChange] = useForm({
         email: ''
@@ -28,6 +29,8 @@ const ResetPassword = () => {
         dispatch(removeError())
         dispatch(restorePassword(email))
     }
+
+    const classBtn = 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 '
 
     return (
         <div className="login-container  w-full h-screen bg-gradient-to-b from-blue-700 to-sky-400 flex justify-center items-center">
@@ -57,21 +60,11 @@ const ResetPassword = () => {
                         />
                     </div>
 
-                    {/* <div className="relative">
-                        <i className="fas fa-lock text-white absolute bottom-1"></i>
-                        <input 
-                            type="password"
-                            placeholder='Password'
-                            className="w-full bg-transparent border-b border-white pl-6 mt-3 placeholder-white text-white focus:outline-0 focus:border-b-blue-800 duration-300 text-sm"
-                            name='password'
-    
-                        />
-                    </div> */}
-                    
                     <input
                         type="submit"
                         value='Send Email'
-                        className="block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 cursor-pointer"
+                        className={disabledBtn ? `cursor-not-allowed ${classBtn}` : `cursor-pointer ${classBtn}`}
+                        disabled={disabledBtn}
                     />
                 </form>
 

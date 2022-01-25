@@ -10,7 +10,6 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {disabledBtn} = useSelector(state => state.ui);
-    console.log(disabledBtn)
 
     const [inputValue, handleInputChange] = useForm({
         email: '',
@@ -31,6 +30,8 @@ const Login = () => {
         dispatch(signInWithGoogle())
     }
 
+    const classBtn = 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5'
+    
     return (
         <div className="login-container  w-full h-screen bg-gradient-to-b from-blue-700 to-sky-400 flex justify-center items-center">
             <div className="login-content bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-10 pb-6  w-3/4 rounded-md relative sm:w-1/2 md:w-1/3 lg:w-1/4">
@@ -68,7 +69,7 @@ const Login = () => {
                     <input
                         type="submit"
                         value='Login'
-                        className={disabledBtn ? "cursor-not-allowed block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 " : 'block w-full text-white bg-blue-900 py-1 font-semibold mt-5 hover:opacity-80 duration-200 mb-2.5 cursor-pointer' }
+                        className={disabledBtn ? `cursor-not-allowed ${classBtn}` : ` cursor-pointer ${classBtn}` }
                         disabled={disabledBtn}
                     />
                 </form>
