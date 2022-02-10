@@ -1,21 +1,27 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { startLogout } from '../../actions/auth'
+import { startNewNote } from '../../actions/notes'
 import { closeSidebar } from '../../actions/sidebar'
 import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state.auth);
-
+    const {showMain} = useSelector(state => state.sidebar)
+    
     const handleLogout= () => {
         dispatch(startLogout())
     }
 
-    const {showMain} = useSelector(state => state.sidebar)
+    
 
     const hiddenSidebar = () => {
         dispatch(closeSidebar())
+    }
+
+    const handleNewNote = () => {
+       dispatch(startNewNote())
     }
 
     const sidebarClasses = 'w-full flex flex-col  h-screen fixed duration-300 bg-slate-800 md:static z-10'
@@ -40,11 +46,12 @@ const Sidebar = () => {
             </div>
 
             <div className="diary-sidebar-new-entry text-white text-center pt-12">
-                <button className="">
+                <button
+                    onClick={handleNewNote}
+                >
                     <i className="far fa-calendar-plus text-7xl duration-500 hover:scale-125 hover:duration-500"></i>
                 </button>
                 <h1 className="font-semibold pt-2 text-2xl">New Note</h1>
-                
             </div>
 
             <DiaryEntries />

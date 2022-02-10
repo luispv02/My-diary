@@ -9,7 +9,10 @@ export const types = {
     removeError: '[UI] Remove Error',
 
     disableButton: '[UI] Disabled Button',
-    activeButton: '[UI] Active Button'
+    activeButton: '[UI] Active Button',
+
+    noteActive: '[Note] Note Active',
+    noteAddArr: '[Note] Note Add Array'
 
 }
 

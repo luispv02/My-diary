@@ -21,21 +21,18 @@ const AppRouter = () => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if(user?.uid) {
-                console.log('Si existe un usuario')
                 dispatch(login(user.displayName, user.uid));
                 setAuthenticated(true);
             }else{
-                console.log('No existe un usuario')
                 setAuthenticated(false);
             }
-            setLoading(false);
+            setLoading(false)
         });
-        setLoading(false);
     }, [dispatch])
 
     if(loading){
         return (
-            <h1 className="text-2xl font-semibold">Espere...</h1>
+            <h1 className="text-2xl font-semibold">Please wait...</h1>
         )
     }
 
@@ -49,10 +46,6 @@ const AppRouter = () => {
                 <PublicRoutes auth={authenticated} element={<AuthRouters/>} />
             }/>
                     
-
-
-                {/* <Route path='/' element={ <DiaryPagePrincipal />} />
-                <Route path='*' element={ <AuthRouters />} /> */}
         </Routes>
   
     )
