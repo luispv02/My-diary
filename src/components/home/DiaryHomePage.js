@@ -10,7 +10,7 @@ const DiaryHomepage = () => {
 
     return (
         <div className="diary-content flex w-full">
-            <div className="sidebar">
+            <div className="sidebar md:w-1/2 lg:w-1/3">
                 <Sidebar />
             </div>
 

@@ -1,7 +1,9 @@
-import { addDoc, collection } from "firebase/firestore"
+import { collection, addDoc, getDocs  } from "firebase/firestore"
 import { db } from "../firebase/firebase-config";
+import { getNotes } from "../helpers/getNotes";
 import { types } from '../types/types'
 
+// Create a note and save it in the firebase db
 export const startNewNote = () => {
     return async (dispatch, getState) => {
 
@@ -22,7 +24,8 @@ export const startNewNote = () => {
     }
 }
 
-const noteActive = (noteActive, id) => {
+// Add the created note as active
+export const noteActive = (noteActive, id) => {
     return {
         type: types.noteActive,
         payload: {
@@ -32,6 +35,7 @@ const noteActive = (noteActive, id) => {
     }
 }
 
+// Add the created notes to the note array
 const addNewNoteArr = (newNote, id) => {
     return {
         type: types.noteAddArr,
@@ -41,3 +45,21 @@ const addNewNoteArr = (newNote, id) => {
         }
     }
 }
+
+// Get the notes from the db
+export const startGetNotes = (uid) => {
+    return async (dispatch) => {
+
+        const notes = await getNotes(uid);
+    
+        dispatch(addNotesObtainedArr(notes))
+    }
+}
+
+const addNotesObtainedArr = (notes) => {
+    return {
+        type: types.notesObtainedArr,
+        payload: notes
+    }
+}
+

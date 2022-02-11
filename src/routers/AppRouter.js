@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { login } from '../actions/auth'
 import PrivateRoutes from './PrivateRoutes'
 import PublicRoutes from './PublicRoutes'
+import { startGetNotes } from '../actions/notes'
 
 
 const AppRouter = () => {
@@ -23,6 +24,8 @@ const AppRouter = () => {
             if(user?.uid) {
                 dispatch(login(user.displayName, user.uid));
                 setAuthenticated(true);
+
+                dispatch(startGetNotes(user.uid))
             }else{
                 setAuthenticated(false);
             }

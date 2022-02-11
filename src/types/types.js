@@ -12,7 +12,8 @@ export const types = {
     activeButton: '[UI] Active Button',
 
     noteActive: '[Note] Note Active',
-    noteAddArr: '[Note] Note Add Array'
+    noteAddArr: '[Note] Note Add Array',
+    notesObtainedArr: '[Note] Add Notes Obtained To Array'
 
 }
 

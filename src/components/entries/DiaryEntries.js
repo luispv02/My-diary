@@ -1,16 +1,18 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import DiaryEntry from './DiaryEntry'
 
 const DiaryEntries = () => {
 
-    const entries = [1,2,3,4,5,6]
+    const { notes } = useSelector(state => state.note);
 
     return (
         <div className="diary-entries overflow-y-scroll  mt-6">
             {
-                entries.map(entry => (
+                notes.map(note => (
                     <DiaryEntry 
-                        key={entry}
+                        key={note.id}
+                        {...note}
                     />
                 ))
             }

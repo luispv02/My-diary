@@ -7,14 +7,16 @@ import DiaryEntries from './DiaryEntries'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
-    const {user} = useSelector(state => state.auth);
-    const {showMain} = useSelector(state => state.sidebar)
-    
+
+
+    const state = useSelector(state => [state.auth.user, state.sidebar.showMain, state.note.notes]);
+    const user = state[0];
+    const showMain = state[1]
+    const notes = state[2]
+
     const handleLogout= () => {
         dispatch(startLogout())
     }
-
-    
 
     const hiddenSidebar = () => {
         dispatch(closeSidebar())
@@ -54,7 +56,11 @@ const Sidebar = () => {
                 <h1 className="font-semibold pt-2 text-2xl">New Note</h1>
             </div>
 
-            <DiaryEntries />
+            {
+                (notes.length !== 0)
+                ? <DiaryEntries />
+                : <h1 className="text-white text-center mt-20">There are no notes</h1>
+            }
         </div>
 
     )
