@@ -13,7 +13,8 @@ export const types = {
 
     noteActive: '[Note] Note Active',
     noteAddArr: '[Note] Note Add Array',
-    notesObtainedArr: '[Note] Add Notes Obtained To Array'
+    notesObtainedArr: '[Note] Add Notes Obtained To Array',
+    noteSaveEdit: '[Note] Note Save Edit'
 
 }
 

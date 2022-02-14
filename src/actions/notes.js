@@ -1,4 +1,5 @@
-import { collection, addDoc, getDocs  } from "firebase/firestore"
+import { collection, addDoc, doc, updateDoc   } from "firebase/firestore"
+import Swal from "sweetalert2";
 import { db } from "../firebase/firebase-config";
 import { getNotes } from "../helpers/getNotes";
 import { types } from '../types/types'
@@ -56,6 +57,7 @@ export const startGetNotes = (uid) => {
     }
 }
 
+// Add the extracted notes to the notes array
 const addNotesObtainedArr = (notes) => {
     return {
         type: types.notesObtainedArr,
@@ -63,3 +65,28 @@ const addNotesObtainedArr = (notes) => {
     }
 }
 
+// Save note edit in db
+export const startSaveNote = (note) => {
+    return async (dispatch, getState) => {
+
+        const {uid} = getState().auth;
+
+        if(!note.url){
+            delete note.url
+        }
+
+        const noteRref = doc(db, `/${uid}/diary/notes/${note.id}`);
+        await updateDoc(noteRref, note);
+        dispatch(saveNote(note))
+
+        Swal.fire({icon: 'success', text: 'Note saved'});
+    }
+}
+
+
+const saveNote = (note) => {
+    return {
+        type: types.noteSaveEdit,
+        payload: note
+    }
+}

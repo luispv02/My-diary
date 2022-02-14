@@ -43,10 +43,8 @@ export const loginWithEmailAndPassword = (email, password) => {
                     dispatch(login(user.displayName, user.uid));
                     dispatch(activeBtn())
                     dispatch(closeSidebar());
-                    console.log(user)
                 })
             .catch(error => {
-                console.log(error)
                 dispatch(activeBtn())
                 if(error.code === 'auth/invalid-email'){
                     Swal.fire({icon: 'error', text: 'Enter Email'});
