@@ -1,4 +1,4 @@
-import { collection, addDoc, doc, updateDoc   } from "firebase/firestore"
+import { collection, addDoc, doc, updateDoc, deleteDoc } from "firebase/firestore"
 import Swal from "sweetalert2";
 import { db } from "../firebase/firebase-config";
 import { getNotes } from "../helpers/getNotes";
@@ -11,16 +11,14 @@ export const startNewNote = () => {
 
         const {uid} = getState().auth;
 
-
         const newNote = {
             title: '',
             body: '',
             date: new Date().getTime(),
         }
 
-  
         const docRef = await addDoc(collection(db, `/${uid}/diary/notes`), newNote);
-    
+
         dispatch(noteActive(newNote, docRef.id))
         dispatch(addNewNoteArr(newNote, docRef.id))
     }
@@ -112,5 +110,35 @@ export const startGetImageUrl = (file) => {
         note.url = imageUrl;
         dispatch(startSaveNote(note))
 
+    }
+}
+
+// Delete note from db
+export const startDeleteNote = (id) => {
+    return async (dispatch, getState) => {
+
+        const { uid } = getState().auth; 
+        
+        const noteDeleteRef = doc(db, `/${uid}/diary/notes/${id}`);
+        await deleteDoc(noteDeleteRef);
+
+       dispatch(deleteNote(id))
+
+    }
+}
+
+
+// Delete component note
+const deleteNote = (id) => {
+    return {
+        type: types.noteDelete,
+        payload: id
+    }
+}
+
+// Clear notes on logout
+export const notesCleaning = () => {
+    return {
+        type: types.noteCleaning
     }
 }

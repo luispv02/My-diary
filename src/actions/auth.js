@@ -4,6 +4,7 @@ import { googleProvider } from "../firebase/firebase-config";
 import Swal from 'sweetalert2'
 import { activeBtn, disableBtn} from "./ui";
 import { closeSidebar } from "./sidebar";
+import { notesCleaning } from "./notes";
 
 //Register user with email and password
 export const registerUserWithEmailAndPassword = (email, password, name) => {
@@ -110,7 +111,7 @@ export const startLogout = () => {
         signOut(auth)
             .then(() => {
                 dispatch(logout());
-                
+                dispatch(notesCleaning())
             })
     }
 }

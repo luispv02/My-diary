@@ -31,7 +31,7 @@ const DiaryEntry = ({title,body,date,id,url}) => {
             
 
             <div className="diary-entry-info p-2 flex items-center flex-auto">
-                <p className="text-sm font-semibold">{title}</p>
+                <p className="text-sm font-semibold leading-4">{title}</p>
             </div>
 
             <div className="diary-entry-date flex flex-col items-center justify-center pr-1">

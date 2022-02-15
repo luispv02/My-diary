@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../../hooks/useForm';
 import DiaryNotesNavbar from './DiaryNotesNavbar'
-import { noteActive } from '../../actions/notes'
+import { noteActive, startDeleteNote } from '../../actions/notes'
 
 const DiaryNotes = () => {
 
@@ -10,11 +10,9 @@ const DiaryNotes = () => {
     const { active:note } = useSelector(state => state.note);
 
     const [formValues, handleInputChange,reset] = useForm(note);
-    const { title, body } = formValues
+    const { title, body, id } = formValues
 
     const activeId = useRef(note.id);
-
-
     
     useEffect(() => {
         if(activeId.current !== note.id){
@@ -27,6 +25,10 @@ const DiaryNotes = () => {
     useEffect(() => {
         dispatch(noteActive(formValues, formValues.id))
     }, [dispatch, formValues]);
+
+    const handleDelete = () => {
+        dispatch(startDeleteNote(id))
+    }
 
   
     return (
@@ -52,16 +54,21 @@ const DiaryNotes = () => {
                 ></textarea>
 
                 {
-                    note.url
+                   ( note.url)
                     && <div className="diary-note-image">
                             <img 
                                 src={note.url}
-                                alt='sunset'
-                                className='w-44' 
+                                alt='image user'
+                                className='w-48' 
                             />
                         </div>
                 }
             </div>
+
+            <button
+               className="bg-red-600 py-2 text-white duration-100 hover:bg-red-700"
+               onClick={handleDelete}
+            >Delete</button>
         </div>
     )
 }

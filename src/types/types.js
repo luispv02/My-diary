@@ -13,8 +13,10 @@ export const types = {
 
     noteActive: '[Note] Note Active',
     noteAddArr: '[Note] Note Add Array',
-    notesObtainedArr: '[Note] Add Notes Obtained To Array',
-    noteSaveEdit: '[Note] Note Save Edit'
+    notesObtainedArr: '[Note] Note Add To Array',
+    noteSaveEdit: '[Note] Note Save Edit',
+    noteDelete: '[Note] Note delete',
+    noteCleaning: '[Note] Note Cleaning'
 
 }
 
