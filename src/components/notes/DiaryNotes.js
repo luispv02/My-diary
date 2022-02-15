@@ -13,7 +13,8 @@ const DiaryNotes = () => {
     const { title, body } = formValues
 
     const activeId = useRef(note.id);
-    
+
+
     
     useEffect(() => {
         if(activeId.current !== note.id){
@@ -51,12 +52,12 @@ const DiaryNotes = () => {
                 ></textarea>
 
                 {
-                    note.useSelector
+                    note.url
                     && <div className="diary-note-image">
                             <img 
-                                src='https://ximagen.com/images/2019/03/10/imagenes-bonitas.jpg'
+                                src={note.url}
                                 alt='sunset'
-                                className='w-40' 
+                                className='w-44' 
                             />
                         </div>
                 }

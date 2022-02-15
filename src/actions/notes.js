@@ -2,6 +2,7 @@ import { collection, addDoc, doc, updateDoc   } from "firebase/firestore"
 import Swal from "sweetalert2";
 import { db } from "../firebase/firebase-config";
 import { getNotes } from "../helpers/getNotes";
+import { uploadImage } from "../helpers/uploadImage";
 import { types } from '../types/types'
 
 // Create a note and save it in the firebase db
@@ -83,10 +84,33 @@ export const startSaveNote = (note) => {
     }
 }
 
-
+// Save edited note to component and show it
 const saveNote = (note) => {
     return {
         type: types.noteSaveEdit,
         payload: note
+    }
+}
+
+// Add image link to note url
+export const startGetImageUrl = (file) => {
+    return async (dispatch,getState) => {
+
+        const {active:note} = getState().note;
+
+        Swal.fire({
+            title: 'Uploading...',
+            text: 'Please wait...',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        })
+    
+        const imageUrl = await uploadImage(file);
+        note.url = imageUrl;
+        dispatch(startSaveNote(note))
+
     }
 }
