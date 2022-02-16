@@ -58,7 +58,7 @@ const DiaryNotes = () => {
                     && <div className="diary-note-image">
                             <img 
                                 src={note.url}
-                                alt='image user'
+                                alt='img user'
                                 className='w-48' 
                             />
                         </div>

@@ -9,6 +9,9 @@ module.exports = {
       },
       opacity: {
         '30': '0.30'
+      },
+      scale: {
+        '105': '1.04'
       }
     },
   },

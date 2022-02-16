@@ -33,7 +33,7 @@ const Sidebar = () => {
         
             <div className="diary-sidebar-navbar flex justify-between items-start px-3 pt-3 text-white font-medium ">
                 
-                <h2 className="w-20 sm:w-1/2 md:w-full">{user}</h2>
+                <h2 className="w-28 sm:w-1/2 md:w-full">{user}</h2>
                 <button 
                     className="hover:text-gray-300"
                     onClick={handleLogout}

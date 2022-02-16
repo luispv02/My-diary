@@ -2,6 +2,7 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { noteActive } from '../../actions/notes'
 import { closeSidebar } from '../../actions/sidebar'
+import { motion } from "framer-motion"
 
 const DiaryEntry = ({title,body,date,id,url}) => {
 
@@ -14,16 +15,19 @@ const DiaryEntry = ({title,body,date,id,url}) => {
     }
 
     return (
-        <div 
+        <motion.div 
             className="diary-entry h-16 bg-white m-3 mb-4 rounded-md overflow-hidden flex flex-row h-18 cursor-pointer"
             onClick={handleNoteActive}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{ duration: .5}}
         >
             {
                 (url)
                 && <div className="diary-entry-image w-16 flex-none">
                     <img 
                         src={url}
-                        alt='sunset'
+                        alt='img user'
                         className='w-full h-full'
                     />
                 </div>
@@ -38,7 +42,7 @@ const DiaryEntry = ({title,body,date,id,url}) => {
                 <p className="text-xs">{noteDate.format('dddd')}</p>
                 <p className="text-xs font-bold">{noteDate.format('Do')}</p>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

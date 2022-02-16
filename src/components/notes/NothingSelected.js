@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useDispatch } from 'react-redux'
 import { openSidebar } from '../../actions/sidebar'
 
@@ -20,11 +21,16 @@ const NothingSelected = () => {
         </div>
         
 
-        <div className="nothing-selected-content text-white text-sm h-screen flex flex-col items-center justify-center ">
-            <i className="fas fa-times text-white text-4xl"></i>
-            <h2>No active note</h2>
-            <h2>Create or select one</h2>
-        </div>
+        <motion.div 
+            className="nothing-selected-content text-white text-sm h-screen flex flex-col items-center justify-center"
+            initial={{scale: .8}}
+            animate={{scale: 1}}
+            transition={{duration: 1, repeat: Infinity, repeatType: 'reverse'}}
+        >
+                <i className="fas fa-times text-white text-4xl"></i>
+                <h2>No active note</h2>
+                <h2>Create or select one</h2>
+        </motion.div>
         
         
     </div>

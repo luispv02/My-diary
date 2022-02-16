@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeError } from "../../actions/ui";
 import { restorePassword } from "../../actions/auth";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 
 const ResetPassword = () => {
@@ -33,7 +34,12 @@ const ResetPassword = () => {
 
     return (
         <div className="login-container  w-full h-screen bg-gradient-to-b from-blue-700 to-sky-400 flex justify-center items-center">
-            <div className="login-content bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-10 pb-6  w-3/4 rounded-md relative sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <motion.div 
+                className="reset-content bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-10 pb-6  w-3/4 rounded-md relative sm:w-1/2 md:w-1/3 lg:w-1/4"
+                initial={{scale: 0}}
+                animate={{scale: 1}}
+                transition={{ duration: .3}}
+            >
                 <img 
                     src='user.png'
                     alt='user icon'
@@ -72,7 +78,7 @@ const ResetPassword = () => {
 
 
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 };

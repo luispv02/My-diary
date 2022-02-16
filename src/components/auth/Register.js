@@ -4,6 +4,7 @@ import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, showError } from '../../actions/ui';
 import { registerUserWithEmailAndPassword } from '../../actions/auth';
+import { motion } from 'framer-motion';
 
 const Register = () => {
 
@@ -55,7 +56,12 @@ const Register = () => {
 
     return (
         <div className="register-container  w-full h-screen bg-gradient-to-b from-blue-700 to-sky-400 flex justify-center items-center">
-            <div className="register-content w-3/4 bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-4 pb-4 rounded-md sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <motion.div 
+                className="register-content w-3/4 bg-white bg-opacity-25 backdrop-blur-sm px-3 pt-4 pb-4 rounded-md sm:w-1/2 md:w-1/3 lg:w-1/4"
+                initial={{scale: 0}}
+                animate={{scale: 1}}
+                transition={{ duration: .3}}
+            >
 
                 <h2 className="text-white font-semilbold text-2xl">Register</h2>
 
@@ -115,7 +121,7 @@ const Register = () => {
                     className="text-white italic text-sm mt-4 hover:underline"
                     onClick={handleGoLogin}
                 >Are you already registered?</button>
-            </div>
+            </motion.div>
         </div>
     )
 }
