@@ -51,12 +51,12 @@ const ResetPassword = () => {
                 <form
                     onSubmit={handleReset}
                 >
-                    <div className="relative">
-                        <i className="fas fa-user text-white absolute bottom-1"></i>
+                    <div className="relative flex items-center border-b border-white pb-1 mt-4">
+                         <img src="user-white.png" alt="user icon" width="20" />
                         <input 
                             type="email"
                             placeholder='Email'
-                            className="w-full bg-transparent border-b border-white pl-6 mt-4 placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm"
+                            className="w-full bg-transparent pl-2 placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm"
                             name='email'
                             onChange={handleInputChange}
                         />

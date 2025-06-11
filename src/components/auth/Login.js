@@ -37,32 +37,28 @@ const Login = () => {
                 animate={{scale: 1}}
                 transition={{ duration: .3}}
             >
-                <img 
-                    src='user.png'
-                    alt='user icon'
-                    className='w-20 absolute left-2/4 -translate-x-1/2 -top-12'
-                />
+
                 <form
                     onSubmit={handleLogin}
                 >
-                    <div className="relative">
-                        <i className="fas fa-user text-white absolute bottom-1"></i>
+                    <div className="relative border-b border-white flex items-center pb-1">
+                        <img src="user-white.png" alt="user icon" width="20" />
                         <input 
                             type="email"
                             placeholder='Email'
-                            className="w-full bg-transparent border-b border-white pl-6 mt-3 placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm"
+                            className="w-full bg-transparent placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm pl-2"
                             name='email'
                             onChange={handleInputChange}
                             value={email}
                         />
                     </div>
 
-                    <div className="relative">
-                        <i className="fas fa-lock text-white absolute bottom-1"></i>
+                    <div className="relative border-b border-white flex items-center pb-1 mt-5">
+                        <img src="password-white.png" alt="user icon" width="20" />
                         <input 
                             type="password"
                             placeholder='Password'
-                            className="w-full bg-transparent border-b border-white pl-6 mt-3 placeholder-white text-white focus:outline-0 focus:border-b-blue-800 duration-300 text-sm"
+                            className="w-full bg-transparent placeholder-white text-white focus:outline-0 focus:border-b-blue-900 duration-200 text-sm pl-2"
                             name='password'
                             onChange={handleInputChange}
                             value={password}
@@ -97,7 +93,7 @@ const Login = () => {
                         onClick={handleLoginGoogle}
                         >
                         <img 
-                            src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+                            src='google.png'
                             alt='icon google'
                             className="bg-white p-2 w-9 h-9"
                         />

@@ -13,11 +13,8 @@ const NothingSelected = () => {
   return (
     <div className="nothing-selected bg-slate-600 h-screen flex flex-col">
         
-        <div className="nothing-selected-hamburger text-center pt-3 md:hidden">
-            <i 
-                className="fas fa-bars text cursor-pointer text-white "
-                onClick={showSidebar}
-            ></i>
+        <div className="nothing-selected-hamburger text-center pt-3 md:hidden mx-auto">
+            <img src="hamburger.png" alt="hamburger icon" width="25" className="text cursor-pointer text-white" onClick={showSidebar}/>
         </div>
         
 
@@ -27,7 +24,7 @@ const NothingSelected = () => {
             animate={{scale: 1}}
             transition={{duration: 1, repeat: Infinity, repeatType: 'reverse'}}
         >
-                <i className="fas fa-times text-white text-4xl"></i>
+                <img src="close.png" alt="close icon" width="50" className="mb-4" />
                 <h2>No active note</h2>
                 <h2>Create or select one</h2>
         </motion.div>

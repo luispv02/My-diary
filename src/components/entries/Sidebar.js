@@ -40,10 +40,11 @@ const Sidebar = () => {
                 >Logout</button>
                 
                 <div className="icon-hidden-sidebar absolute left-2/4 -translate-x-1/2 md:hidden">
-                    <i 
+                    {/* <i 
                         className="fas fa-times text-lg cursor-pointer"
                         onClick={ hiddenSidebar }
-                    ></i>
+                    ></i> */}
+                    <img src="close.png" alt="close icon" width="18" onClick={ hiddenSidebar } className="cursor-pointer"/>
                 </div>
             </div>
 
@@ -51,7 +52,7 @@ const Sidebar = () => {
                 <button
                     onClick={handleNewNote}
                 >
-                    <i className="far fa-calendar-plus text-7xl duration-500 hover:scale-125 hover:duration-500"></i>
+                    <img src="calendar.png" alt="calendar icon" width="50"/>
                 </button>
                 <h1 className="font-semibold pt-2 text-2xl">New Note</h1>
             </div>
