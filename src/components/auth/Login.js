@@ -42,7 +42,7 @@ const Login = () => {
                     onSubmit={handleLogin}
                 >
                     <div className="relative border-b border-white flex items-center pb-1">
-                        <img src="user-white.png" alt="user icon" width="20" />
+                        <img src="user-white.png" alt="user icon" width="22" />
                         <input 
                             type="email"
                             placeholder='Email'
@@ -54,7 +54,7 @@ const Login = () => {
                     </div>
 
                     <div className="relative border-b border-white flex items-center pb-1 mt-5">
-                        <img src="password-white.png" alt="user icon" width="20" />
+                        <img src="password-white.png" alt="user icon" width="22" />
                         <input 
                             type="password"
                             placeholder='Password'
